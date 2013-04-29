@@ -89,9 +89,9 @@ void Game::spawnForest()
 
 		if (i % 10 == 0 && tree)
 		{
-			float time = sim->getNow() + Util::getRandom(5.0f, 30.0f);
+			float time = sim->getNow() + Util::getRandom(5.0f, 60.0f);
 			if (rand() % 2 == 0)
-				sim->addEvent(time + Util::getRandom(5.0f, 30.0f), std::make_shared<FireFighterEvent>(tree));
+				sim->addEvent(time + Util::getRandom(5.0f, 15.0f), std::make_shared<FireFighterEvent>(tree));
 			
 			sim->addEvent(time, std::make_shared<FireEvent>(tree));
 		}
@@ -299,6 +299,8 @@ void Game::placeStartingPad(int cellX, int cellY)
 	auto hose = std::make_shared<FireHose>(0, 0);
 	mGirl->pickUpItem(hose);
 
+	axe = std::make_shared<Axe>(50, 50);
+	mGirl->pickUpItem(axe);
 
 	for (int i = cellX - 1; i < cellX + 8; ++i)
 		for (int j = cellY - 1; j < cellY + 6; ++j)

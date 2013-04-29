@@ -13,7 +13,6 @@
 #include "Fire.h"
 #include "KillEvent.h"
 
-
 //HI GURL!
 Girl::Girl(float x, float y)
 	:mCurrentSelectedItemIndex(-1)
@@ -110,16 +109,47 @@ void Girl::update()
 	{
 		if (mSelectionTimer <= 0)
 		{
-			++mCurrentSelectedItemIndex;
-			if (mCurrentSelectedItemIndex >= mItems.size())
-				mCurrentSelectedItemIndex = 0;
+			int thisItemType = mSelectedItem->itemType();
+
+
+			int find0 = -1;
+			for (int i = mCurrentSelectedItemIndex; i < mItems.size(); ++i)
+			{
+				if (mItems[i]->itemType() != thisItemType)
+				{
+					find0 = i;
+					break;
+				}
+			}
+
+			int find1 = -1;
+			for (int i = 0; i < mCurrentSelectedItemIndex; ++i)
+			{
+				if (mItems[i]->itemType() != thisItemType)
+				{
+					find1 = i;
+					break;
+				}
+			}
+
+			if (find0 >= 0)
+				mCurrentSelectedItemIndex = find0;
+			else if (find1 >= 0)
+				mCurrentSelectedItemIndex = find1;
+			else
+			{
+
+				++mCurrentSelectedItemIndex;
+				if (mCurrentSelectedItemIndex >= mItems.size())
+					mCurrentSelectedItemIndex = 0;
+			}
 
 			if (mItems.size() != 0)
 				mSelectedItem = mItems[mCurrentSelectedItemIndex];
 			else
 				mSelectedItem = nullptr;
 
-			mSelectionTimer = 50;
+			mSelectionTimer = 25;
 		}
 	}
 

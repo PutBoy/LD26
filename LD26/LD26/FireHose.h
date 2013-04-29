@@ -19,6 +19,8 @@ public:
 
 	virtual void pickUp(std::shared_ptr<Entity>);
 	virtual bool useOn(std::shared_ptr<Entity>, float strength);
+
+	virtual int itemType() {return 1;};
 private:
 	sf::Vector2f mPosition;
 	float mUses;

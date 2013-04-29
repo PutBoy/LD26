@@ -79,7 +79,7 @@ bool Axe::useOn(std::shared_ptr<Entity> other, float strength)
 
 	}
 	//there are 100hp on 1 tree
-	if (uses > 300.f)
+	if (uses > 350.f)
 		kill();
 
 	return success;

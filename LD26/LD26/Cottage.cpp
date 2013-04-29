@@ -40,7 +40,7 @@ void Cottage::setAblaze()
 
 bool Cottage::isAblaze()
 {
-	return false;
+	return true;
 }
 
 sf::Vector2f Cottage::getPosition()

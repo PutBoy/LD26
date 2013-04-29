@@ -30,6 +30,13 @@ void Tree::update()
 	if (mShake < 0)
 		mShake = 0;
 
+
+}
+
+
+void Tree::render(Canvas& canvas)
+{
+	//has to be done here or the shake animation doesn't show
 	mShakePosition += mShakePositionDirection;
 	if (mShakePosition > 1.f)
 	{
@@ -41,11 +48,7 @@ void Tree::update()
 		mShakePositionDirection = 0.33f;
 		mShakePosition = -1.f;
 	}
-}
 
-
-void Tree::render(Canvas& canvas)
-{
 	float positionOffset = 0;
 	int color = 255;
 	if (mShake > 0)
@@ -54,6 +57,8 @@ void Tree::render(Canvas& canvas)
 		color = ((2.f / (mShakePosition + 1.f)) * 50.f) + 205;
 		if (color > 255)
 			color = 255;
+		else if (color < 127)
+			color = 127;
 	}
 
 

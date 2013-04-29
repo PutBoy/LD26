@@ -47,7 +47,7 @@ void WaterSplash::setAblaze()
 
 bool WaterSplash::isAblaze()
 {
-	return false;
+	return true;
 }
 
 sf::Vector2f WaterSplash::getPosition()

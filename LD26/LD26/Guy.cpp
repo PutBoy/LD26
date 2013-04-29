@@ -165,7 +165,7 @@ void Guy::setAblaze()
 
 bool Guy::isAblaze()
 {
-	return false;
+	return true;
 }
 
 sf::Vector2f Guy::getPosition()

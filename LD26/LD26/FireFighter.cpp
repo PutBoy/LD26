@@ -238,16 +238,18 @@ void FireFighter::dieByFire()
 {
 	if (!mIsAblaze)
 	{
-		DEBUG("FireFighter dying of fire!");
 		mIsAblaze = true;
 		Simulator* sim = Simulator::getInstance();
 		EntityManager* manager = EntityManager::getInstance();
 
-		float time = sim->getNow() + 0.5f;
+		float time = sim->getNow() + 1.5f;
 		sim->addEvent(time, std::make_shared<KillEvent>(getThis()));
 
 		manager->addEntity(std::make_shared<Fire>(getThis(), time));
 		manager->addEntity(mFireAxe);
+		manager->addEntity(mFireHose);
+		mFireHose->pickUp(nullptr);
+		mFireAxe->pickUp(nullptr);
 	}
 }
 

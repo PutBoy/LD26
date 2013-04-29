@@ -18,6 +18,8 @@ public:
 
 	virtual void pickUp(std::shared_ptr<Entity>) = 0;
 	virtual bool useOn(std::shared_ptr<Entity>, float strength) = 0;
+
+	virtual int itemType() = 0;
 protected:
 	std::shared_ptr<Entity> getUser() 
 	{

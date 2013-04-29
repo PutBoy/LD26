@@ -42,6 +42,7 @@ void FireEvent::activate()
 	
 	//don't set fire to yourself doe
 	entities.erase(std::remove(entities.begin(), entities.end(), thisEntity), entities.end());
+	entities.erase(std::remove_if(entities.begin(), entities.end(), [](std::shared_ptr<Entity> entity){return entity->isAblaze();}), entities.end());
 
 	//we keep track of which objects have been added to a fire even so we don't fire off multiple
 	//events on one object.
@@ -59,7 +60,7 @@ void FireEvent::activate()
 			amount = 2;
 
 		if (Util::getRandom(.0f, 1.f) > .98f)
-			amount = 2;
+			amount = 3;
 
 		if (entities.size() < 10)
 			amount = 1;
@@ -70,7 +71,7 @@ void FireEvent::activate()
 			auto& entity = entities[setFireTo];
 			entities.erase(entities.begin() + setFireTo);
 
-			sim->addEvent(sim->getNow() + Util::getRandom(5.0f, 15.0f), std::make_shared<FireEvent>(entity));
+			sim->addEvent(sim->getNow() + Util::getRandom(2.0f, 10.0f), std::make_shared<FireEvent>(entity));
 			mFireSpread.push_back(entity);
 
 		}
