@@ -1,0 +1,15 @@
+Title:
+	"I wanna save the boy"
+	"I want to save the boy"
+	
+features:
+	- 	forest fire implemented through priority queue
+	- 	can pick up objects that can help
+	- 	play as a girl saving a boy
+	- 	
+	
+art style:
+	- 8bititsh
+
+FireFighters
+	- Firefighters chop down trees in their way!
