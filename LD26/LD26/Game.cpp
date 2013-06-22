@@ -299,9 +299,6 @@ void Game::placeStartingPad(int cellX, int cellY)
 	auto hose = std::make_shared<FireHose>(0, 0);
 	mGirl->pickUpItem(hose);
 
-	axe = std::make_shared<Axe>(50, 50);
-	mGirl->pickUpItem(axe);
-
 	for (int i = cellX - 1; i < cellX + 8; ++i)
 		for (int j = cellY - 1; j < cellY + 6; ++j)
 			occupy(i, j);
